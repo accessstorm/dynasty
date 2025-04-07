@@ -10,6 +10,9 @@ export interface ProductCardProps {
   price: number;
   image: string;
   color: string;
+  pattern?: string;
+  material?: string;
+  category?: string;
   isNew?: boolean;
   link: string;
 }
