@@ -1,5 +1,5 @@
 import { Button } from '@mantine/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Define Razorpay response interface
 interface RazorpayResponse {
@@ -34,9 +34,7 @@ interface RazorpayOptions {
 // Define global window with Razorpay
 declare global {
   interface Window {
-    Razorpay: new (options: RazorpayOptions) => {
-      open: () => void;
-    };
+    Razorpay: any;
   }
 }
 
@@ -49,10 +47,6 @@ interface RazorpayButtonProps {
   children?: React.ReactNode;
 }
 
-interface WindowWithRazorpay extends Window {
-  Razorpay: any;
-}
-
 const RazorpayButton: React.FC<RazorpayButtonProps> = ({
   amount,
   name,
@@ -62,14 +56,45 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
   children
 }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+  
+  // Load Razorpay script on component mount
+  useEffect(() => {
+    const loadRazorpayScript = () => {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.async = true;
+        script.onload = () => {
+          resolve(true);
+          setScriptLoaded(true);
+        };
+        document.body.appendChild(script);
+      });
+    };
+    
+    // Check if script is already loaded
+    if (!window.Razorpay) {
+      loadRazorpayScript();
+    } else {
+      setScriptLoaded(true);
+    }
+  }, []);
   
   // Function to handle payment
   const handlePayment = async () => {
     try {
       setIsLoading(true);
       
+      // Check if script is loaded
+      if (!scriptLoaded && !window.Razorpay) {
+        alert('Razorpay script is still loading. Please try again in a moment.');
+        setIsLoading(false);
+        return;
+      }
+      
       // Make an API call to create an order
-      const response = await fetch('http://localhost:3000/create-order', {
+      const response = await fetch('/create-order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,16 +138,19 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
         theme: {
           color: '#000000',
         },
+        modal: {
+          ondismiss: function() {
+            setIsLoading(false);
+          }
+        }
       };
       
-      const windowWithRazorpay = window as WindowWithRazorpay;
-      const paymentObject = new windowWithRazorpay.Razorpay(options);
+      const paymentObject = new window.Razorpay(options);
       paymentObject.open();
       
     } catch (error) {
       console.error('Payment initialization failed:', error);
       alert('Payment initialization failed: ' + (error as Error).message);
-    } finally {
       setIsLoading(false);
     }
   };
@@ -133,7 +161,7 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
         className={className || "bg-black text-white hover:bg-gray-800"}
         radius="xs"
         onClick={handlePayment}
-        disabled={isLoading}
+        disabled={isLoading || !scriptLoaded}
       >
         {children || buttonText}
       </Button>
