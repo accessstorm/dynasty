@@ -101,8 +101,8 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
         return;
       }
       
-      // Create order on the server
-      const response = await fetch('/razorpay', {
+      // Create order on the server using Vercel API route
+      const response = await fetch('/api/razorpay', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
         name: 'Dynasty',
         description: `Payment for ${name}`,
         order_id: orderData.id,
-        handler: function (response: any) {
+        handler: function (response: RazorpayResponse) {
           console.log("Payment successful:", response);
           alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
         },
