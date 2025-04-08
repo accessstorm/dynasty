@@ -8,67 +8,61 @@ interface WhatsAppButtonProps {
 
 const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({ 
   phoneNumber, 
-  message = "Hello! I'm interested in Dynasty products."
+  message = "Hello, I'm interested in Dynasty products!"
 }) => {
   const [isMobile, setIsMobile] = useState(false);
-
-  // Check if device is mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    // Set on initial load
-    checkMobile();
-    
-    // Add event listener for window resize
-    window.addEventListener('resize', checkMobile);
-    
-    // Clean up
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Format the phone number (remove any non-numeric characters)
-  const formattedPhone = phoneNumber.replace(/\D/g, '');
-  
-  // Create the WhatsApp URL
-  const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(message)}`;
   
   // Animation variants for the pulsing effect
   const pulseVariants = {
     pulse: {
-      scale: [1, 1.1, 1],
-      boxShadow: [
-        '0 4px 6px rgba(37, 211, 102, 0.3)',
-        '0 8px 15px rgba(37, 211, 102, 0.5)', 
-        '0 4px 6px rgba(37, 211, 102, 0.3)'
-      ],
+      scale: [1, 1.05, 1],
       transition: {
-        duration: 2.5,
+        duration: 2,
         repeat: Infinity,
-        repeatType: "loop" as const,
-        ease: "easeInOut"
+        repeatType: 'loop' as const
       }
     }
   };
   
-  // Create an outer glow effect that pulses
+  // Animation variants for the outer glow
   const glowVariants = {
     pulse: {
-      opacity: [0.4, 0.7, 0.4],
-      scale: [1, 1.15, 1],
+      opacity: [0.5, 0.7, 0.5],
+      scale: [1, 1.1, 1],
       transition: {
-        duration: 2.5,
+        duration: 2,
         repeat: Infinity,
-        repeatType: "loop" as const,
-        ease: "easeInOut"
+        repeatType: 'loop' as const
       }
     }
   };
+  
+  // Determine if device is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on initial load
+    checkIfMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
+  
+  // Prepare WhatsApp URL (different format for mobile vs desktop)
+  const whatsappUrl = isMobile
+    ? `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`
+    : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
   
   return (
     <motion.div
-      className={`fixed z-50 ${isMobile ? 'bottom-5 right-5' : 'bottom-8 left-8'}`}
+      className={`fixed z-20 ${isMobile ? 'bottom-5 right-5' : 'bottom-8 left-8'}`}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.5 }}
@@ -92,7 +86,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
         animate="pulse"
         variants={pulseVariants}
       >
-        <div className={`relative ${isMobile ? 'w-8 h-8' : 'w-10 h-10'}`}>
+        <div className="w-7 h-7 flex items-center justify-center">
           {/* WhatsApp SVG Icon */}
           <svg 
             xmlns="http://www.w3.org/2000/svg" 

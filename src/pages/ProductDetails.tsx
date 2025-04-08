@@ -3,13 +3,16 @@ import { useParams, Link } from 'react-router-dom';
 import { Container, Text, Button, Badge, Accordion } from '@mantine/core';
 import { getStaticProducts } from '../services/StaticProductService';
 import { ProductCardProps } from '../components/ProductCard';
+import RazorpayButton from '../components/RazorpayButton';
 
 const ProductDetails = () => {
-  const { productId } = useParams<{ productId: string }>();
-  const [product, setProduct] = useState<ProductCardProps | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { id } = useParams<{ id: string }>();
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(true);
   const [productImages, setProductImages] = useState<string[]>([]);
+  const [product, setProduct] = useState<ProductCardProps | null>(null);
+  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
 
   useEffect(() => {
     const fetchProduct = () => {
@@ -28,7 +31,7 @@ const ProductDetails = () => {
         ];
         
         // Find the product with the matching ID
-        const foundProduct = productsArray.find(p => p.id === Number(productId));
+        const foundProduct = productsArray.find(p => p.id === Number(id));
         
         if (foundProduct) {
           // Determine product category
@@ -60,7 +63,7 @@ const ProductDetails = () => {
     };
     
     fetchProduct();
-  }, [productId]);
+  }, [id]);
 
   // Function to generate product images based on category and ID
   const generateProductImages = (category: string, id: number): string[] => {
@@ -81,17 +84,26 @@ const ProductDetails = () => {
     return images;
   };
 
-  const incrementQuantity = () => setQuantity(prev => prev + 1);
-  const decrementQuantity = () => setQuantity(prev => prev > 1 ? prev - 1 : 1);
-  
-  // Function to format price in Indian Rupees
-  const formatINR = (amount: number) =>
-    new Intl.NumberFormat('en-IN', { 
-      style: 'currency', 
-      currency: 'INR',
-      maximumFractionDigits: 0 
-    }).format(amount);
+  // Function to handle color selection
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color);
+  };
 
+  // Function to handle size selection
+  const handleSizeSelect = (size: string) => {
+    setSelectedSize(size);
+  };
+
+  const handleIncrement = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
+    }
+  };
+  
   // Function to generate breadcrumbs based on product category
   const generateBreadcrumbs = () => {
     if (!product) return [];
@@ -162,8 +174,8 @@ const ProductDetails = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Product Images */}
+      <div className="grid lg:grid-cols-2 gap-10 max-w-7xl mx-auto px-4 py-10">
+        {/* Left: Product Images */}
         <div className="flex flex-col space-y-4">
           <div className="relative aspect-square overflow-hidden border border-gray-100">
             <img
@@ -197,8 +209,9 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        {/* Product Details */}
-        <div className="flex flex-col pr-8">
+        {/* Right: Product Info */}
+        <div className="flex flex-col space-y-6">
+          {/* Product Title & Info */}
           <h1 className="text-3xl font-medium text-gray-900 mb-2">
             {product.name}
           </h1>
@@ -207,56 +220,51 @@ const ProductDetails = () => {
             SKU: TTH-SNT-{product.id}
           </div>
           
-          <div className="mb-6">
-            <div className="text-2xl font-medium mb-1">
-              {formatINR(product.price)}
-            </div>
-            <div className="text-sm text-gray-500">
-              Inclusive of all taxes
-            </div>
+          {/* Price */}
+          <div className="text-2xl md:text-3xl font-serif">
+            ₹{product?.price.toLocaleString('en-IN')}
           </div>
-          
-          {product.isNew && (
-            <div className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded mb-6">
-              IN STOCK
-            </div>
-          )}
-          
-          <div className="flex items-center space-x-4 mb-8">
-            <div className="border border-gray-300 flex items-center">
+
+          {/* Quantity Selector */}
+          <div className="flex items-center space-x-4">
+            <span className="text-gray-700">Quantity:</span>
+            <div className="flex border border-gray-300">
               <button 
-                className="px-3 py-2 border-r border-gray-300 hover:bg-gray-100"
-                onClick={decrementQuantity}
+                onClick={handleDecrement}
+                className="px-3 py-1 text-lg border-r border-gray-300"
               >
                 -
               </button>
-              <div className="px-4 py-2">
-                {quantity}
-              </div>
+              <span className="px-4 py-1 text-lg">{quantity}</span>
               <button 
-                className="px-3 py-2 border-l border-gray-300 hover:bg-gray-100"
-                onClick={incrementQuantity}
+                onClick={handleIncrement}
+                className="px-3 py-1 text-lg border-l border-gray-300"
               >
                 +
               </button>
             </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="grid grid-cols-2 gap-4">
+            <Button
+              className="bg-black text-white hover:bg-[#D4AF37] hover:text-black transition-all uppercase text-sm tracking-widest py-4 font-medium"
+              radius="xs"
+              onClick={() => console.log("Add to cart clicked")}
+            >
+              Add to Cart
+            </Button>
             
-            <div className="grid grid-cols-2 gap-4 flex-grow">
-              <Button
-                radius="none"
-                className="bg-black hover:bg-gray-800 text-white px-6 py-2 tracking-wider"
-              >
-                ADD TO CART
-              </Button>
-              <Button
-                radius="none"
-                className="bg-black hover:bg-gray-800 text-white px-6 py-2 tracking-wider"
-              >
-                BUY NOW
-              </Button>
-            </div>
+            <RazorpayButton
+              amount={product?.price * quantity}
+              name={product?.name || "Product"}
+              description={product?.description || "Description"}
+              className="bg-black text-white hover:bg-[#D4AF37] hover:text-black transition-all uppercase text-sm tracking-widest py-4 font-medium"
+              buttonText="Buy Now"
+            />
           </div>
           
+          {/* Product Description */}
           <div className="mb-10">
             <Button
               variant="subtle"

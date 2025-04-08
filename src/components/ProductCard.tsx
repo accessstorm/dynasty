@@ -2,6 +2,7 @@ import { Text, Button, Badge } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import RazorpayButton from './RazorpayButton';
 
 export interface ProductCardProps {
   id: number;
@@ -59,23 +60,38 @@ const ProductCard = ({
           }}
         />
         
-        {/* Buy Now Button Overlay */}
+        {/* Button Overlay */}
         <div 
           className={`absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : ''}`}
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              component={Link}
-              to={link || `/product/${id}`}
-              className="bg-black text-white hover:bg-[#D4AF37] hover:text-black transition-all uppercase text-xs tracking-widest px-8 py-3 font-medium"
-              radius="xs"
+          <div className="flex flex-col gap-3">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Buy Now
-            </Button>
-          </motion.div>
+              <Button
+                component={Link}
+                to={link || `/product/${id}`}
+                className="bg-black text-white hover:bg-[#D4AF37] hover:text-black transition-all uppercase text-xs tracking-widest px-8 py-3 font-medium"
+                radius="xs"
+              >
+                View Details
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <RazorpayButton
+                amount={price}
+                name={name}
+                description={description}
+                className="bg-black text-white hover:bg-[#D4AF37] hover:text-black transition-all uppercase text-xs tracking-widest px-8 py-3 font-medium"
+                buttonText="Buy Now"
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
       

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { Breadcrumbs, Anchor } from '@mantine/core';
+import RazorpayButton from './RazorpayButton';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -220,14 +221,22 @@ const Navbar = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div 
-                  className="text-black transition-opacity flex items-center"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                {/* Shopping Cart with Razorpay integration */}
+                <RazorpayButton
+                  amount={4990}
+                  name="Dynasty Shopping Cart"
+                  description="Complete your purchase"
+                  className="text-black"
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  <span className="ml-1">(0)</span>
-                </motion.div>
+                  <motion.div 
+                    className="flex items-center cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <ShoppingCart className="h-5 w-5" />
+                    <span className="ml-1">(0)</span>
+                  </motion.div>
+                </RazorpayButton>
               </div>
             </div>
 

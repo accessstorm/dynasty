@@ -68,6 +68,41 @@ For detailed mapping rules, see `src/data/categoryMapping.json`.
 - Gold-accented "New" badges for new products
 - Elegant typography for product titles and prices
 
+## Razorpay Integration
+
+This project includes Razorpay payment integration for checkout. 
+
+### Running the Application with Payment Integration
+
+To run the application with payment integration:
+
+```bash
+# Install dependencies
+npm install
+
+# Start the combined server (frontend + payment backend)
+npm run payment
+```
+
+This will start both the Vite dev server and the payment processing backend in a single command.
+
+### Payment Features
+
+- One-click payment processing with Razorpay
+- Secure payment gateway integration
+- Test mode with provided credentials
+- Mobile-responsive design
+
+### Testing Razorpay Payments
+
+Use these test credentials to simulate a payment:
+
+- Card Number: 4111 1111 1111 1111
+- Expiry: Any future date
+- CVV: Any 3 digits
+- Name: Any name
+- 3D Secure Password: 1234
+
 ## Getting Started
 
 1. Clone the repository
