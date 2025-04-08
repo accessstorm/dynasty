@@ -11,17 +11,20 @@ interface RazorpayResponse {
 // Define Razorpay options interface
 interface RazorpayOptions {
   key: string;
-  amount: string;
+  amount: number;
   currency: string;
   order_id: string;
   name: string;
   description: string;
-  image: string;
+  image?: string;
   handler: (response: RazorpayResponse) => void;
   prefill: {
     name: string;
     email: string;
     contact: string;
+  };
+  notes?: {
+    [key: string]: string;
   };
   theme: {
     color: string;
@@ -61,24 +64,29 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
   // Load Razorpay script on component mount
   useEffect(() => {
     const loadRazorpayScript = () => {
+      if (document.getElementById('razorpay-script')) {
+        setScriptLoaded(true);
+        return;
+      }
+      
       return new Promise((resolve) => {
         const script = document.createElement('script');
+        script.id = 'razorpay-script';
         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
         script.async = true;
         script.onload = () => {
           resolve(true);
           setScriptLoaded(true);
         };
+        script.onerror = () => {
+          console.error("Failed to load Razorpay script");
+          resolve(false);
+        };
         document.body.appendChild(script);
       });
     };
     
-    // Check if script is already loaded
-    if (!window.Razorpay) {
-      loadRazorpayScript();
-    } else {
-      setScriptLoaded(true);
-    }
+    loadRazorpayScript();
   }, []);
   
   // Function to handle payment
@@ -87,14 +95,14 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
       setIsLoading(true);
       
       // Check if script is loaded
-      if (!scriptLoaded && !window.Razorpay) {
+      if (!scriptLoaded) {
         alert('Razorpay script is still loading. Please try again in a moment.');
         setIsLoading(false);
         return;
       }
       
-      // Make an API call to create an order
-      const response = await fetch('/create-order', {
+      // Create order on the server
+      const response = await fetch('/razorpay', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,38 +110,32 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
         body: JSON.stringify({
           amount,
           currency: 'INR',
-          notes: {
-            name,
-            description
-          }
         }),
       });
       
       if (!response.ok) {
-        throw new Error(`Server responded with status: ${response.status} ${response.statusText}`);
+        throw new Error(`Server error: ${response.status} ${response.statusText}`);
       }
       
-      const order = await response.json();
+      const orderData = await response.json();
+      console.log("Order created:", orderData);
       
-      // Initialize Razorpay payment
+      // Initialize Razorpay
       const options = {
-        key: 'rzp_test_TN1UYHfEGIr6rI', // Hardcoded test key
-        amount: order.amount,
-        currency: order.currency,
+        key: 'rzp_test_k7psHC0CdwYUlW',
+        amount: orderData.amount,
+        currency: orderData.currency,
         name: 'Dynasty',
         description: `Payment for ${name}`,
-        order_id: order.id,
-        handler: function (response: RazorpayResponse) {
+        order_id: orderData.id,
+        handler: function (response: any) {
+          console.log("Payment successful:", response);
           alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
-          console.log(response);
         },
         prefill: {
           name: 'Customer Name',
           email: 'customer@example.com',
-          contact: '+919876543210',
-        },
-        notes: {
-          address: 'Dynasty Corporate Office'
+          contact: '9876543210',
         },
         theme: {
           color: '#000000',
@@ -145,8 +147,20 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
         }
       };
       
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
+      try {
+        const rzp = new window.Razorpay(options);
+        rzp.on('payment.failed', function (response: any) {
+          console.error('Payment failed:', response.error);
+          alert(`Payment failed: ${response.error.description}`);
+          setIsLoading(false);
+        });
+        
+        rzp.open();
+      } catch (err) {
+        console.error("Error creating Razorpay instance:", err);
+        alert("Could not initialize payment. Please try again later.");
+        setIsLoading(false);
+      }
       
     } catch (error) {
       console.error('Payment initialization failed:', error);
