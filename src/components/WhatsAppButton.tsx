@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface WhatsAppButtonProps {
   phoneNumber: string;
@@ -9,6 +10,24 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   phoneNumber, 
   message = "Hello! I'm interested in Dynasty products."
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Set on initial load
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Format the phone number (remove any non-numeric characters)
   const formattedPhone = phoneNumber.replace(/\D/g, '');
   
@@ -49,7 +68,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   
   return (
     <motion.div
-      className="fixed bottom-8 left-8 z-50"
+      className={`fixed z-50 ${isMobile ? 'bottom-5 right-5' : 'bottom-8 left-8'}`}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.5 }}
@@ -66,14 +85,14 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
         href={whatsappUrl} 
         target="_blank" 
         rel="noopener noreferrer"
-        className="flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        className={`flex items-center justify-center bg-[#25D366] rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${isMobile ? 'w-14 h-14' : 'w-16 h-16'}`}
         aria-label="Contact us on WhatsApp"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         animate="pulse"
         variants={pulseVariants}
       >
-        <div className="relative w-10 h-10">
+        <div className={`relative ${isMobile ? 'w-8 h-8' : 'w-10 h-10'}`}>
           {/* WhatsApp SVG Icon */}
           <svg 
             xmlns="http://www.w3.org/2000/svg" 

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Text, RangeSlider, Button, ColorSwatch, NumberInput, ActionIcon } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
-import { IconFilter, IconX } from '@tabler/icons-react';
+import { Text, RangeSlider, NumberInput, ColorSwatch } from '@mantine/core';
 
 interface FilterSidebarProps {
   priceRange: [number, number];
@@ -24,8 +22,6 @@ const FilterSidebar = ({
   selectedColors
 }: FilterSidebarProps) => {
   const [localPriceRange, setLocalPriceRange] = useState<[number, number]>(priceRange);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const isMobile = useMediaQuery('(max-width: 768px)');
   
   // Update local price range when props change
   useEffect(() => {
@@ -34,29 +30,27 @@ const FilterSidebar = ({
   
   const handlePriceRangeChange = (value: [number, number]) => {
     setLocalPriceRange(value);
+    // Apply price filter immediately without needing the Filter button
+    onPriceRangeChange(value);
   };
   
   const handleMinPriceChange = (value: number) => {
     if (value >= 0 && value <= localPriceRange[1]) {
-      setLocalPriceRange([value, localPriceRange[1]]);
+      const newRange: [number, number] = [value, localPriceRange[1]];
+      setLocalPriceRange(newRange);
+      onPriceRangeChange(newRange);
     }
   };
   
   const handleMaxPriceChange = (value: number) => {
     if (value >= localPriceRange[0]) {
-      setLocalPriceRange([localPriceRange[0], value]);
+      const newRange: [number, number] = [localPriceRange[0], value];
+      setLocalPriceRange(newRange);
+      onPriceRangeChange(newRange);
     }
   };
   
-  const applyPriceFilter = () => {
-    onPriceRangeChange(localPriceRange);
-  };
-  
   const isColorSelected = (color: string) => selectedColors.includes(color);
-  
-  const toggleMobileSidebar = () => {
-    setIsMobileOpen(!isMobileOpen);
-  };
   
   // The main sidebar content - price and color filters
   const renderFilterContent = () => (
@@ -73,7 +67,7 @@ const FilterSidebar = ({
             value={localPriceRange}
             onChange={handlePriceRangeChange}
             minRange={100}
-            label={null}
+            label={(value) => `₹${value}`}
             thumbSize={14}
             aria-label="Price range"
             styles={{
@@ -83,6 +77,12 @@ const FilterSidebar = ({
                 borderWidth: 1, 
                 borderColor: "#000",
                 boxShadow: "0 1px 3px rgba(0,0,0,0.1)" 
+              },
+              label: { 
+                backgroundColor: "#000",
+                color: "#fff",
+                fontSize: "10px",
+                padding: "2px 6px" 
               }
             }}
           />
@@ -121,16 +121,6 @@ const FilterSidebar = ({
               />
             </div>
           </div>
-          <Button 
-            variant="outline" 
-            size="xs" 
-            radius="xs" 
-            onClick={applyPriceFilter} 
-            className="uppercase text-xs font-medium"
-            aria-label="Apply price filter"
-          >
-            FILTER
-          </Button>
         </div>
       </div>
       
@@ -170,49 +160,6 @@ const FilterSidebar = ({
     </>
   );
   
-  // Mobile filter button
-  if (isMobile && !isMobileOpen) {
-    return (
-      <div className="fixed bottom-4 right-4 z-50">
-        <Button 
-          onClick={toggleMobileSidebar}
-          className="bg-black text-white shadow-lg"
-          radius="md"
-          aria-label="Open filters"
-          aria-expanded="false"
-          aria-controls="mobile-filters"
-          leftSection={<IconFilter size={16} />}
-        >
-          Filters
-        </Button>
-      </div>
-    );
-  }
-  
-  // Mobile overlay sidebar
-  if (isMobile && isMobileOpen) {
-    return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-        <div 
-          className="bg-white w-5/6 h-full p-6 overflow-y-auto animate-slide-in-right"
-          id="mobile-filters"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="filter-heading"
-        >
-          <div className="flex justify-between items-center mb-4 border-b pb-3">
-            <Text className="text-xl font-medium">Filters</Text>
-            <ActionIcon onClick={toggleMobileSidebar} aria-label="Close filters">
-              <IconX size={24} />
-            </ActionIcon>
-          </div>
-          {renderFilterContent()}
-        </div>
-      </div>
-    );
-  }
-  
-  // Desktop sidebar
   return (
     <div className="w-full sticky top-4">
       {renderFilterContent()}

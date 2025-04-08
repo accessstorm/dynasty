@@ -70,7 +70,7 @@ const Contact = () => {
     >
       {/* Hero Section */}
       <motion.div
-        className="bg-black text-white py-20 mb-16 relative overflow-hidden"
+        className="bg-black text-white py-16 md:py-20 mb-10 md:mb-16 relative overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -81,7 +81,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="text-center">
             <motion.h1
-              className="text-5xl font-serif mb-4 tracking-wide"
+              className="text-4xl md:text-5xl font-serif mb-4 tracking-wide"
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -95,7 +95,7 @@ const Contact = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
             ></motion.div>
             <motion.p
-              className="text-lg font-light tracking-wider max-w-2xl mx-auto"
+              className="text-base md:text-lg font-light tracking-wider max-w-2xl mx-auto px-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -107,18 +107,18 @@ const Contact = () => {
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Form */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="bg-white p-8 shadow-sm"
+            className="bg-white p-5 md:p-8 shadow-sm"
           >
             <motion.div variants={itemVariants}>
-              <Title order={2} className="font-serif mb-2">Get In Touch</Title>
+              <Title order={2} className="font-serif mb-2 text-2xl md:text-3xl">Get In Touch</Title>
               <div className="w-16 h-px bg-black mb-6"></div>
-              <Text className="mb-8 text-gray-600">
+              <Text className="mb-8 text-gray-600 text-sm md:text-base">
                 We're here to assist you with any questions or concerns you might have about our products or services.
               </Text>
             </motion.div>
@@ -215,10 +215,10 @@ const Contact = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="bg-white p-8 shadow-sm mb-8"
+              className="bg-white p-5 md:p-8 shadow-sm mb-8"
             >
               <motion.div variants={itemVariants}>
-                <Title order={2} className="font-serif mb-2">Contact Information</Title>
+                <Title order={2} className="font-serif mb-2 text-2xl md:text-3xl">Contact Information</Title>
                 <div className="w-16 h-px bg-black mb-6"></div>
               </motion.div>
 
@@ -229,8 +229,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <Text fw={500}>Phone</Text>
-                    <Text className="text-gray-600">+91 98765 43210</Text>
-                    <Text className="text-gray-600">+91 11234 56789</Text>
+                    <Text className="text-gray-600">+919820238241</Text>
                   </div>
                 </motion.div>
 
@@ -277,7 +276,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="bg-white p-4 shadow-sm h-[300px] overflow-hidden"
+              className="bg-white p-4 shadow-sm h-[250px] md:h-[300px] overflow-hidden"
             >
               <div className="w-full h-full">
                 <iframe
@@ -299,48 +298,48 @@ const Contact = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-20 text-center"
+          className="mt-16 md:mt-20 text-center"
         >
-          <Title order={2} className="font-serif mb-2">Frequently Asked Questions</Title>
-          <div className="w-24 h-px bg-black mx-auto mb-12"></div>
+          <Title order={2} className="font-serif mb-2 text-2xl md:text-3xl">Frequently Asked Questions</Title>
+          <div className="w-24 h-px bg-black mx-auto mb-8 md:mb-12"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-left max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-12 gap-y-6 md:gap-y-8 text-left max-w-4xl mx-auto px-2">
             <div>
               <Text fw={600} className="mb-2">What are your shipping times?</Text>
-              <Text className="text-gray-600">
+              <Text className="text-gray-600 text-sm md:text-base">
                 We typically process orders within 24 hours. Delivery takes 3-4 working days for prepaid orders and 4-5 days for COD orders within India.
               </Text>
             </div>
             
             <div>
               <Text fw={600} className="mb-2">Do you ship internationally?</Text>
-              <Text className="text-gray-600">
+              <Text className="text-gray-600 text-sm md:text-base">
                 Yes, we do ship internationally. International orders typically take 7-14 business days to arrive, depending on the destination.
               </Text>
             </div>
             
             <div>
               <Text fw={600} className="mb-2">What is your return policy?</Text>
-              <Text className="text-gray-600">
+              <Text className="text-gray-600 text-sm md:text-base">
                 We offer a 7-day return policy for all regular-priced items. Sale items are non-returnable and non-exchangeable.
               </Text>
             </div>
             
             <div>
               <Text fw={600} className="mb-2">Do you offer customized ties?</Text>
-              <Text className="text-gray-600">
+              <Text className="text-gray-600 text-sm md:text-base">
                 Yes, we offer customization services for bulk orders. Please contact us directly for customized queries at kanika@tossido.in.
               </Text>
             </div>
           </div>
           
-          <Group justify="center" className="mt-12">
+          <Group justify="center" className="mt-8 md:mt-12">
             <Button
               variant="outline"
               color="dark"
               radius={0}
               size="md"
-              className="border-black text-black hover:bg-black hover:text-white transition-all px-8 py-2 tracking-widest text-sm font-light uppercase"
+              className="border-black text-black hover:bg-black hover:text-white transition-all px-6 sm:px-8 py-2 tracking-widest text-sm font-light uppercase"
             >
               View All FAQs
             </Button>

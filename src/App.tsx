@@ -23,9 +23,9 @@ function App() {
   return (
     <MantineProvider theme={luxuryTheme}>
       <Router>
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col overflow-x-hidden">
           <Navbar />
-          <div className="flex-grow">
+          <div className="flex-grow w-full max-w-full">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/neckties" element={<Neckties />} />
@@ -43,7 +43,7 @@ function App() {
           </div>
           <Footer />
           {/* WhatsApp floating button */}
-          <WhatsAppButton phoneNumber="+919876543210" />
+          <WhatsAppButton phoneNumber="+919820238241" />
         </div>
       </Router>
     </MantineProvider>

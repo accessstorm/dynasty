@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Container, Text } from '@mantine/core';
+import { Container, Text, Button } from '@mantine/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 import FilterSidebar from '../components/FilterSidebar';
 import ProductGrid from '../components/ProductGrid';
 import { ProductCardProps } from '../components/ProductCard';
 import StaticProductService from '../services/StaticProductService';
+import { IconFilter } from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 
 const Neckties = () => {
   const location = useLocation();
@@ -14,6 +16,8 @@ const Neckties = () => {
   const [priceRange, setPriceRange] = useState<[number, number]>([3400, 18000]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [sortOption, setSortOption] = useState<string | null>('newest');
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 768px)');
   
   // Color filters with counts for neckties
   const colorFilters = [
@@ -140,6 +144,10 @@ const Neckties = () => {
     setFilteredProducts(filtered);
     return filtered;
   };
+  
+  const toggleMobileFilter = () => {
+    setIsMobileFilterOpen(!isMobileFilterOpen);
+  };
 
   return (
     <div className="py-8">
@@ -155,6 +163,17 @@ const Neckties = () => {
           <Text>
             Showing all {filteredProducts.length} results
           </Text>
+          {isMobile && (
+            <Button
+              onClick={toggleMobileFilter}
+              className="bg-black text-white"
+              radius="md"
+              size="sm"
+              leftSection={<IconFilter size={16} />}
+            >
+              Filters
+            </Button>
+          )}
         </div>
       </Container>
       
@@ -162,13 +181,25 @@ const Neckties = () => {
         <div className="flex flex-col md:flex-row">
           {/* Left Sidebar */}
           <div className="w-full md:w-1/4 md:pr-8">
-            <FilterSidebar
-              priceRange={priceRange}
-              onPriceRangeChange={handlePriceRangeChange}
-              colorFilters={colorFilters}
-              onColorFilterChange={handleColorFilterChange}
-              selectedColors={selectedColors}
-            />
+            {isMobile ? (
+              isMobileFilterOpen && (
+                <FilterSidebar
+                  priceRange={priceRange}
+                  onPriceRangeChange={handlePriceRangeChange}
+                  colorFilters={colorFilters}
+                  onColorFilterChange={handleColorFilterChange}
+                  selectedColors={selectedColors}
+                />
+              )
+            ) : (
+              <FilterSidebar
+                priceRange={priceRange}
+                onPriceRangeChange={handlePriceRangeChange}
+                colorFilters={colorFilters}
+                onColorFilterChange={handleColorFilterChange}
+                selectedColors={selectedColors}
+              />
+            )}
           </div>
           
           {/* Main Content */}

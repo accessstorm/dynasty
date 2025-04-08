@@ -19,7 +19,7 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: Phone, text: '+91 98765 43210', href: 'tel:+919876543210' },
+    { icon: Phone, text: '+919820238241', href: 'tel:+919820238241' },
     { icon: Mail, text: 'contact@dynasty.com', href: 'mailto:contact@dynasty.com' },
     { icon: MapPin, text: 'Delhi NCR, India', href: '#' }
   ];
@@ -40,13 +40,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white text-gray-600 pt-16 pb-8">
+    <footer className="bg-white text-gray-600 pt-12 md:pt-16 pb-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-12 md:mb-16">
           {/* Quick Links */}
-          <div>
-            <h3 className="text-black text-lg font-light mb-6">QUICK LINKS</h3>
-            <ul className="space-y-3">
+          <div className="text-center sm:text-left">
+            <h3 className="text-black text-lg font-light mb-4 md:mb-6">QUICK LINKS</h3>
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <motion.div
@@ -66,11 +67,11 @@ const Footer = () => {
           </div>
           
           {/* Contact */}
-          <div>
-            <h3 className="text-black text-lg font-light mb-6">CONTACT US</h3>
-            <ul className="space-y-4">
+          <div className="text-center sm:text-left">
+            <h3 className="text-black text-lg font-light mb-4 md:mb-6">CONTACT US</h3>
+            <ul className="space-y-3 md:space-y-4">
               {contactInfo.map((item, index) => (
-                <li key={index} className="flex items-start">
+                <li key={index} className="flex items-start justify-center sm:justify-start">
                   <item.icon size={16} className="mt-1 mr-3" />
                   <a href={item.href} className="text-gray-600 hover:text-black transition-colors text-sm">
                     {item.text}
@@ -80,10 +81,10 @@ const Footer = () => {
             </ul>
           </div>
           
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-black text-lg font-light mb-6">FOLLOW US</h3>
-            <div className="flex space-x-4 mb-6">
+          {/* Newsletter & Social */}
+          <div className="text-center sm:text-left">
+            <h3 className="text-black text-lg font-light mb-4 md:mb-6">FOLLOW US</h3>
+            <div className="flex space-x-4 mb-6 justify-center sm:justify-start">
               {socialMediaLinks.map((social) => (
                 <motion.a
                   key={social.label}
@@ -106,13 +107,13 @@ const Footer = () => {
         {/* Payment Methods */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <p className="w-full text-center text-xs text-gray-500 mb-3">We accept:</p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {paymentMethods.map((method) => (
               <div key={method.name} className="flex items-center justify-center">
                 <img 
                   src={method.image} 
                   alt={method.name} 
-                  className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                  className="h-6 md:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
                   title={method.name}
                 />
               </div>
@@ -121,7 +122,7 @@ const Footer = () => {
         </div>
         
         {/* Copyright */}
-        <div className="pt-8 border-t border-gray-200 text-center">
+        <div className="pt-6 md:pt-8 border-t border-gray-200 text-center">
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} DYNASTY. All rights reserved.
           </p>
@@ -131,9 +132,9 @@ const Footer = () => {
         </div>
         
         {/* Made by Zyberly */}
-        <div className="mt-8 text-center">
+        <div className="mt-6 md:mt-8 text-center">
           <div className="flex justify-center mb-2">
-            <div className="w-8 h-8 rounded-full overflow-hidden">
+            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full overflow-hidden">
               <img 
                 src="/images/zyberly.png" 
                 alt="Zyberly" 
