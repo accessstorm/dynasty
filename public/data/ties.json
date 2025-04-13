@@ -1,0 +1,904 @@
+{
+  "ties": [
+    {
+      "id": 1,
+      "name": "Royal Elegance",
+      "pattern": "Paisley",
+      "material": "Silk",
+      "color": "Navy Blue",
+      "description": "Elegant paisley pattern crafted from finest silk.",
+      "price": 4999
+    },
+    {
+      "id": 2,
+      "name": "Silken Majesty",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Burgundy",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 6999
+    },
+    {
+      "id": 3,
+      "name": "Imperial Knot",
+      "pattern": "Herringbone",
+      "material": "Cashmere-Silk Blend",
+      "color": "Forest Green",
+      "description": "Elegant herringbone pattern crafted from premium cashmere-silk blend.",
+      "price": 7999
+    },
+    {
+      "id": 4,
+      "name": "Maharaja Silk",
+      "pattern": "Paisley",
+      "material": "Hand-woven Silk",
+      "color": "Royal Purple",
+      "description": "Elegant paisley pattern crafted from hand-woven silk.",
+      "price": 9999
+    },
+    {
+      "id": 5,
+      "name": "Sovereign Gold",
+      "pattern": "Diamond",
+      "material": "Pure Silk",
+      "color": "Gold",
+      "description": "Elegant diamond pattern crafted from pure silk.",
+      "price": 8999
+    },
+    {
+      "id": 6,
+      "name": "Regal Paisley",
+      "pattern": "Paisley",
+      "material": "Jacquard Silk",
+      "color": "Wine Red",
+      "description": "Elegant paisley pattern crafted from jacquard silk.",
+      "price": 5999
+    },
+    {
+      "id": 7,
+      "name": "Noble Heritage",
+      "pattern": "Stripe",
+      "material": "Silk",
+      "color": "Silver Gray",
+      "description": "Elegant stripe pattern crafted from finest silk.",
+      "price": 4499
+    },
+    {
+      "id": 8,
+      "name": "Dynasty Classic",
+      "pattern": "Solid",
+      "material": "Hand-woven Silk",
+      "color": "Black",
+      "description": "Elegant solid pattern crafted from hand-woven silk.",
+      "price": 3999
+    },
+    {
+      "id": 9,
+      "name": "Princely Stripe",
+      "pattern": "Stripe",
+      "material": "Mulberry Silk",
+      "color": "Navy and Gold",
+      "description": "Elegant stripe pattern crafted from Mulberry silk.",
+      "price": 5499
+    },
+    {
+      "id": 10,
+      "name": "Velvet Luxury",
+      "pattern": "Solid",
+      "material": "Silk-Velvet Blend",
+      "color": "Deep Purple",
+      "description": "Elegant solid pattern crafted from silk-velvet blend.",
+      "price": 7999
+    },
+    {
+      "id": 11,
+      "name": "Opulent Diamond",
+      "pattern": "Diamond",
+      "material": "Jacquard Silk",
+      "color": "Emerald Green",
+      "description": "Elegant diamond pattern crafted from jacquard silk.",
+      "price": 6499
+    },
+    {
+      "id": 12,
+      "name": "Heritage Weave",
+      "pattern": "Geometric",
+      "material": "Artisanal Silk",
+      "color": "Maroon",
+      "description": "Elegant geometric pattern crafted from artisanal silk.",
+      "price": 8999
+    },
+    {
+      "id": 13,
+      "name": "Midnight Blue",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Midnight Blue",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 3499
+    },
+    {
+      "id": 14,
+      "name": "Crimson Elite",
+      "pattern": "Micro-dot",
+      "material": "Premium Silk",
+      "color": "Crimson",
+      "description": "Elegant micro-dot pattern crafted from premium silk.",
+      "price": 4999
+    },
+    {
+      "id": 15,
+      "name": "Golden Tapestry",
+      "pattern": "Jacquard",
+      "material": "Gold-threaded Silk",
+      "color": "Gold and Ivory",
+      "description": "Elegant jacquard pattern crafted from gold-threaded silk.",
+      "price": 12999
+    },
+    {
+      "id": 16,
+      "name": "Emperor's Choice",
+      "pattern": "Floral",
+      "material": "Mulberry Silk",
+      "color": "Ruby Red",
+      "description": "Elegant floral pattern crafted from Mulberry silk.",
+      "price": 9999
+    },
+    {
+      "id": 17,
+      "name": "Jade Dynasty",
+      "pattern": "Paisley",
+      "material": "Premium Silk",
+      "color": "Jade Green",
+      "description": "Elegant paisley pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 18,
+      "name": "Ivory Prestige",
+      "pattern": "Solid",
+      "material": "Hand-woven Silk",
+      "color": "Ivory",
+      "description": "Elegant solid pattern crafted from hand-woven silk.",
+      "price": 5499
+    },
+    {
+      "id": 19,
+      "name": "Sapphire Aura",
+      "pattern": "Geometric",
+      "material": "Pure Silk",
+      "color": "Sapphire Blue",
+      "description": "Elegant geometric pattern crafted from pure silk.",
+      "price": 6999
+    },
+    {
+      "id": 20,
+      "name": "Platinum Select",
+      "pattern": "Stripe",
+      "material": "Silver-threaded Silk",
+      "color": "Silver and Black",
+      "description": "Elegant stripe pattern crafted from silver-threaded silk.",
+      "price": 8999
+    },
+    {
+      "id": 21,
+      "name": "Classic Ebony",
+      "pattern": "Solid",
+      "material": "Premium Silk",
+      "color": "Classic Black",
+      "description": "Elegant solid pattern crafted from premium silk.",
+      "price": 3999
+    },
+    {
+      "id": 22,
+      "name": "Cobalt Wave",
+      "pattern": "Wave",
+      "material": "Pure Silk",
+      "color": "Cobalt Blue",
+      "description": "Elegant wave pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 23,
+      "name": "Charcoal Diamond",
+      "pattern": "Diamond",
+      "material": "Hand-woven Silk",
+      "color": "Charcoal Gray",
+      "description": "Elegant diamond pattern crafted from hand-woven silk.",
+      "price": 5499
+    },
+    {
+      "id": 24,
+      "name": "Mocha Delight",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Mocha Brown",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 4999
+    },
+    {
+      "id": 25,
+      "name": "Coral Reef",
+      "pattern": "Geometric",
+      "material": "Premium Silk",
+      "color": "Coral",
+      "description": "Elegant geometric pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 26,
+      "name": "Amber Waves",
+      "pattern": "Wave",
+      "material": "Pure Silk",
+      "color": "Amber",
+      "description": "Elegant wave pattern crafted from pure silk.",
+      "price": 6499
+    },
+    {
+      "id": 27,
+      "name": "Teal Treasure",
+      "pattern": "Paisley",
+      "material": "Jacquard Silk",
+      "color": "Teal",
+      "description": "Elegant paisley pattern crafted from jacquard silk.",
+      "price": 5499
+    },
+    {
+      "id": 28,
+      "name": "Bronze Age",
+      "pattern": "Solid",
+      "material": "Metallic-threaded Silk",
+      "color": "Bronze",
+      "description": "Elegant solid pattern crafted from metallic-threaded silk.",
+      "price": 7999
+    },
+    {
+      "id": 29,
+      "name": "Lavender Fields",
+      "pattern": "Floral",
+      "material": "Premium Silk",
+      "color": "Lavender",
+      "description": "Elegant floral pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 30,
+      "name": "Rustic Copper",
+      "pattern": "Geometric",
+      "material": "Hand-woven Silk",
+      "color": "Copper",
+      "description": "Elegant geometric pattern crafted from hand-woven silk.",
+      "price": 6999
+    },
+    {
+      "id": 31,
+      "name": "Mint Whisper",
+      "pattern": "Micro-dot",
+      "material": "Pure Silk",
+      "color": "Mint Green",
+      "description": "Elegant micro-dot pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 32,
+      "name": "Indigo Night",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Indigo",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 5499
+    },
+    {
+      "id": 33,
+      "name": "Cedar Wood",
+      "pattern": "Herringbone",
+      "material": "Premium Silk",
+      "color": "Cedar Brown",
+      "description": "Elegant herringbone pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 34,
+      "name": "Ivory Tower",
+      "pattern": "Solid",
+      "material": "Hand-woven Silk",
+      "color": "Ivory",
+      "description": "Elegant solid pattern crafted from hand-woven silk.",
+      "price": 4999
+    },
+    {
+      "id": 35,
+      "name": "Slate Elegance",
+      "pattern": "Geometric",
+      "material": "Pure Silk",
+      "color": "Slate Gray",
+      "description": "Elegant geometric pattern crafted from pure silk.",
+      "price": 5499
+    },
+    {
+      "id": 36,
+      "name": "Blush Pink",
+      "pattern": "Solid",
+      "material": "Premium Silk",
+      "color": "Blush Pink",
+      "description": "Elegant solid pattern crafted from premium silk.",
+      "price": 4499
+    },
+    {
+      "id": 37,
+      "name": "Navy Commander",
+      "pattern": "Anchor",
+      "material": "Jacquard Silk",
+      "color": "Navy Blue",
+      "description": "Elegant anchor pattern crafted from jacquard silk.",
+      "price": 5999
+    },
+    {
+      "id": 38,
+      "name": "Olive Branch",
+      "pattern": "Solid",
+      "material": "Hand-woven Silk",
+      "color": "Olive Green",
+      "description": "Elegant solid pattern crafted from hand-woven silk.",
+      "price": 4999
+    },
+    {
+      "id": 39,
+      "name": "Terracotta Dreams",
+      "pattern": "Geometric",
+      "material": "Pure Silk",
+      "color": "Terracotta",
+      "description": "Elegant geometric pattern crafted from pure silk.",
+      "price": 5499
+    },
+    {
+      "id": 40,
+      "name": "Sky Blue",
+      "pattern": "Solid",
+      "material": "Premium Silk",
+      "color": "Sky Blue",
+      "description": "Elegant solid pattern crafted from premium silk.",
+      "price": 3999
+    },
+    {
+      "id": 41,
+      "name": "Charcoal Pinstripe",
+      "pattern": "Pinstripe",
+      "material": "Wool-Silk Blend",
+      "color": "Charcoal",
+      "description": "Elegant pinstripe pattern crafted from wool-silk blend.",
+      "price": 6499
+    },
+    {
+      "id": 42,
+      "name": "Ruby Glimmer",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Ruby Red",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 6999
+    },
+    {
+      "id": 43,
+      "name": "Mahogany Essence",
+      "pattern": "Geometric",
+      "material": "Hand-woven Silk",
+      "color": "Mahogany",
+      "description": "Elegant geometric pattern crafted from hand-woven silk.",
+      "price": 5999
+    },
+    {
+      "id": 44,
+      "name": "Pewter Gray",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Pewter Gray",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 45,
+      "name": "Sienna Sunset",
+      "pattern": "Gradient",
+      "material": "Premium Silk",
+      "color": "Sienna",
+      "description": "Elegant gradient pattern crafted from premium silk.",
+      "price": 7999
+    },
+    {
+      "id": 46,
+      "name": "Lilac Dreams",
+      "pattern": "Floral",
+      "material": "Jacquard Silk",
+      "color": "Lilac",
+      "description": "Elegant floral pattern crafted from jacquard silk.",
+      "price": 5999
+    },
+    {
+      "id": 47,
+      "name": "Taupe Classic",
+      "pattern": "Solid",
+      "material": "Hand-woven Silk",
+      "color": "Taupe",
+      "description": "Elegant solid pattern crafted from hand-woven silk.",
+      "price": 4499
+    },
+    {
+      "id": 48,
+      "name": "Aqua Marine",
+      "pattern": "Wave",
+      "material": "Pure Silk",
+      "color": "Aquamarine",
+      "description": "Elegant wave pattern crafted from pure silk.",
+      "price": 5499
+    },
+    {
+      "id": 49,
+      "name": "Champagne Toast",
+      "pattern": "Solid",
+      "material": "Premium Silk",
+      "color": "Champagne",
+      "description": "Elegant solid pattern crafted from premium silk.",
+      "price": 6499
+    },
+    {
+      "id": 50,
+      "name": "Scarlet Letter",
+      "pattern": "Monogram",
+      "material": "Mulberry Silk",
+      "color": "Scarlet",
+      "description": "Elegant monogram pattern crafted from Mulberry silk.",
+      "price": 7999
+    },
+    {
+      "id": 51,
+      "name": "Sage Wisdom",
+      "pattern": "Herringbone",
+      "material": "Hand-woven Silk",
+      "color": "Sage Green",
+      "description": "Elegant herringbone pattern crafted from hand-woven silk.",
+      "price": 5499
+    },
+    {
+      "id": 52,
+      "name": "Slate Blue",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Slate Blue",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4999
+    },
+    {
+      "id": 53,
+      "name": "Sand Dunes",
+      "pattern": "Geometric",
+      "material": "Premium Silk",
+      "color": "Sand",
+      "description": "Elegant geometric pattern crafted from premium silk.",
+      "price": 5499
+    },
+    {
+      "id": 54,
+      "name": "Plum Perfection",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Plum",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 6499
+    },
+    {
+      "id": 55,
+      "name": "Moss Garden",
+      "pattern": "Floral",
+      "material": "Hand-woven Silk",
+      "color": "Moss Green",
+      "description": "Elegant floral pattern crafted from hand-woven silk.",
+      "price": 5999
+    },
+    {
+      "id": 56,
+      "name": "Steel Gray",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Steel Gray",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 57,
+      "name": "Tangerine Dream",
+      "pattern": "Geometric",
+      "material": "Premium Silk",
+      "color": "Tangerine",
+      "description": "Elegant geometric pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 58,
+      "name": "Periwinkle Blue",
+      "pattern": "Solid",
+      "material": "Jacquard Silk",
+      "color": "Periwinkle",
+      "description": "Elegant solid pattern crafted from jacquard silk.",
+      "price": 5499
+    },
+    {
+      "id": 59,
+      "name": "Caramel Delight",
+      "pattern": "Herringbone",
+      "material": "Hand-woven Silk",
+      "color": "Caramel",
+      "description": "Elegant herringbone pattern crafted from hand-woven silk.",
+      "price": 6499
+    },
+    {
+      "id": 60,
+      "name": "Azure Sky",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Azure",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4999
+    },
+    {
+      "id": 61,
+      "name": "Mustard Seed",
+      "pattern": "Diamond",
+      "material": "Premium Silk",
+      "color": "Mustard",
+      "description": "Elegant diamond pattern crafted from premium silk.",
+      "price": 5499
+    },
+    {
+      "id": 62,
+      "name": "Rose Quartz",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Rose Quartz",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 6999
+    },
+    {
+      "id": 63,
+      "name": "Fern Green",
+      "pattern": "Paisley",
+      "material": "Hand-woven Silk",
+      "color": "Fern Green",
+      "description": "Elegant paisley pattern crafted from hand-woven silk.",
+      "price": 5999
+    },
+    {
+      "id": 64,
+      "name": "Dove Gray",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Dove Gray",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 65,
+      "name": "Coral Reef",
+      "pattern": "Wave",
+      "material": "Premium Silk",
+      "color": "Coral",
+      "description": "Elegant wave pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 66,
+      "name": "Cornflower Blue",
+      "pattern": "Solid",
+      "material": "Jacquard Silk",
+      "color": "Cornflower Blue",
+      "description": "Elegant solid pattern crafted from jacquard silk.",
+      "price": 5499
+    },
+    {
+      "id": 67,
+      "name": "Chestnut Brown",
+      "pattern": "Herringbone",
+      "material": "Hand-woven Silk",
+      "color": "Chestnut",
+      "description": "Elegant herringbone pattern crafted from hand-woven silk.",
+      "price": 6499
+    },
+    {
+      "id": 68,
+      "name": "Cerulean Blue",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Cerulean",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4999
+    },
+    {
+      "id": 69,
+      "name": "Peach Blossom",
+      "pattern": "Floral",
+      "material": "Premium Silk",
+      "color": "Peach",
+      "description": "Elegant floral pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 70,
+      "name": "Amethyst Dream",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Amethyst",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 7999
+    },
+    {
+      "id": 71,
+      "name": "Hunter Green",
+      "pattern": "Paisley",
+      "material": "Hand-woven Silk",
+      "color": "Hunter Green",
+      "description": "Elegant paisley pattern crafted from hand-woven silk.",
+      "price": 5999
+    },
+    {
+      "id": 72,
+      "name": "Silver Cloud",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Silver",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 6499
+    },
+    {
+      "id": 73,
+      "name": "Terra Firma",
+      "pattern": "Geometric",
+      "material": "Premium Silk",
+      "color": "Terra Cotta",
+      "description": "Elegant geometric pattern crafted from premium silk.",
+      "price": 5499
+    },
+    {
+      "id": 74,
+      "name": "Mauve Mist",
+      "pattern": "Solid",
+      "material": "Jacquard Silk",
+      "color": "Mauve",
+      "description": "Elegant solid pattern crafted from jacquard silk.",
+      "price": 4999
+    },
+    {
+      "id": 75,
+      "name": "Walnut Brown",
+      "pattern": "Herringbone",
+      "material": "Hand-woven Silk",
+      "color": "Walnut",
+      "description": "Elegant herringbone pattern crafted from hand-woven silk.",
+      "price": 6499
+    },
+    {
+      "id": 76,
+      "name": "Turquoise Tide",
+      "pattern": "Wave",
+      "material": "Pure Silk",
+      "color": "Turquoise",
+      "description": "Elegant wave pattern crafted from pure silk.",
+      "price": 5999
+    },
+    {
+      "id": 77,
+      "name": "Saffron Spice",
+      "pattern": "Paisley",
+      "material": "Premium Silk",
+      "color": "Saffron",
+      "description": "Elegant paisley pattern crafted from premium silk.",
+      "price": 7999
+    },
+    {
+      "id": 78,
+      "name": "Smoke Gray",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Smoke Gray",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 4999
+    },
+    {
+      "id": 79,
+      "name": "Olive Grove",
+      "pattern": "Geometric",
+      "material": "Hand-woven Silk",
+      "color": "Olive",
+      "description": "Elegant geometric pattern crafted from hand-woven silk.",
+      "price": 5499
+    },
+    {
+      "id": 80,
+      "name": "Powder Blue",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Powder Blue",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 81,
+      "name": "Russet Orange",
+      "pattern": "Paisley",
+      "material": "Premium Silk",
+      "color": "Russet",
+      "description": "Elegant paisley pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 82,
+      "name": "Heather Gray",
+      "pattern": "Solid",
+      "material": "Jacquard Silk",
+      "color": "Heather Gray",
+      "description": "Elegant solid pattern crafted from jacquard silk.",
+      "price": 4999
+    },
+    {
+      "id": 83,
+      "name": "Pine Green",
+      "pattern": "Herringbone",
+      "material": "Hand-woven Silk",
+      "color": "Pine Green",
+      "description": "Elegant herringbone pattern crafted from hand-woven silk.",
+      "price": 5499
+    },
+    {
+      "id": 84,
+      "name": "Denim Blue",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Denim Blue",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 85,
+      "name": "Burnt Orange",
+      "pattern": "Geometric",
+      "material": "Premium Silk",
+      "color": "Burnt Orange",
+      "description": "Elegant geometric pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 86,
+      "name": "Dusty Rose",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Dusty Rose",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 6499
+    },
+    {
+      "id": 87,
+      "name": "Emerald Isle",
+      "pattern": "Paisley",
+      "material": "Hand-woven Silk",
+      "color": "Emerald",
+      "description": "Elegant paisley pattern crafted from hand-woven silk.",
+      "price": 7999
+    },
+    {
+      "id": 88,
+      "name": "Ash Gray",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Ash Gray",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4499
+    },
+    {
+      "id": 89,
+      "name": "Maroon Majesty",
+      "pattern": "Diamond",
+      "material": "Premium Silk",
+      "color": "Maroon",
+      "description": "Elegant diamond pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 90,
+      "name": "Seafoam Green",
+      "pattern": "Solid",
+      "material": "Jacquard Silk",
+      "color": "Seafoam",
+      "description": "Elegant solid pattern crafted from jacquard silk.",
+      "price": 5499
+    },
+    {
+      "id": 91,
+      "name": "Chocolate Brown",
+      "pattern": "Herringbone",
+      "material": "Hand-woven Silk",
+      "color": "Chocolate",
+      "description": "Elegant herringbone pattern crafted from hand-woven silk.",
+      "price": 6499
+    },
+    {
+      "id": 92,
+      "name": "Cobalt Blue",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Cobalt",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4999
+    },
+    {
+      "id": 93,
+      "name": "Amber Glow",
+      "pattern": "Paisley",
+      "material": "Premium Silk",
+      "color": "Amber",
+      "description": "Elegant paisley pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 94,
+      "name": "Pink Champagne",
+      "pattern": "Solid",
+      "material": "Mulberry Silk",
+      "color": "Pink Champagne",
+      "description": "Elegant solid pattern crafted from Mulberry silk.",
+      "price": 6999
+    },
+    {
+      "id": 95,
+      "name": "Forest Majesty",
+      "pattern": "Floral",
+      "material": "Hand-woven Silk",
+      "color": "Forest Green",
+      "description": "Elegant floral pattern crafted from hand-woven silk.",
+      "price": 7999
+    },
+    {
+      "id": 96,
+      "name": "Platinum Gray",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Platinum",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 5499
+    },
+    {
+      "id": 97,
+      "name": "Burnt Sienna",
+      "pattern": "Geometric",
+      "material": "Premium Silk",
+      "color": "Burnt Sienna",
+      "description": "Elegant geometric pattern crafted from premium silk.",
+      "price": 5999
+    },
+    {
+      "id": 98,
+      "name": "Lavender Mist",
+      "pattern": "Solid",
+      "material": "Jacquard Silk",
+      "color": "Lavender",
+      "description": "Elegant solid pattern crafted from jacquard silk.",
+      "price": 4999
+    },
+    {
+      "id": 99,
+      "name": "Espresso Brown",
+      "pattern": "Herringbone",
+      "material": "Hand-woven Silk",
+      "color": "Espresso",
+      "description": "Elegant herringbone pattern crafted from hand-woven silk.",
+      "price": 6499
+    },
+    {
+      "id": 100,
+      "name": "Royal Navy",
+      "pattern": "Solid",
+      "material": "Pure Silk",
+      "color": "Navy Blue",
+      "description": "Elegant solid pattern crafted from pure silk.",
+      "price": 4999
+    }
+  ]
+} 

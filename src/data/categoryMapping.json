@@ -1,0 +1,99 @@
+{
+  "categoryMappingRules": {
+    "wedding": {
+      "description": "Ties for wedding and formal occasions",
+      "criteria": [
+        "price > 8000",
+        "pattern includes 'Paisley'",
+        "color includes 'Gold' or 'Silver'",
+        "material includes 'silk-velvet'"
+      ],
+      "targetQuantity": 12
+    },
+    "women": {
+      "description": "Ties in colors suitable for women's fashion",
+      "criteria": [
+        "color includes 'Purple'",
+        "color includes 'Pink'",
+        "color includes 'Coral'"
+      ],
+      "targetQuantity": 12
+    },
+    "bowTies": {
+      "description": "Ties with patterns suitable for bow ties (conceptual)",
+      "criteria": [
+        "pattern includes 'Diamond'",
+        "pattern includes 'Geometric'",
+        "name includes 'Classic'"
+      ],
+      "targetQuantity": 12
+    },
+    "pocketSquares": {
+      "description": "Ties with patterns suitable for pocket squares (conceptual)",
+      "criteria": [
+        "pattern includes 'Solid'",
+        "pattern includes 'Floral'",
+        "material includes 'Artisanal'"
+      ],
+      "targetQuantity": 12
+    },
+    "men": {
+      "description": "Ties with masculine colors and patterns",
+      "criteria": [
+        "color includes 'Blue'",
+        "color includes 'Navy'",
+        "color includes 'Black'",
+        "color includes 'Charcoal'"
+      ],
+      "targetQuantity": 12
+    },
+    "oversizedTees": {
+      "description": "Lower-priced casual ties (conceptual)",
+      "criteria": [
+        "price < 4000",
+        "material includes 'Cotton'"
+      ],
+      "targetQuantity": 12
+    },
+    "combos": {
+      "description": "Ties that work well in combinations",
+      "criteria": [
+        "pattern includes 'Stripe'",
+        "pattern includes 'Jacquard'",
+        "name includes 'Heritage'"
+      ],
+      "targetQuantity": 12
+    },
+    "neckties": {
+      "description": "Default category for all ties",
+      "criteria": ["default category"],
+      "targetQuantity": 15
+    },
+    "home": {
+      "description": "Featured products for home page",
+      "criteria": [
+        "50% premium ties (price > 6000)",
+        "50% mid-range ties (4000 <= price <= 6000)"
+      ],
+      "targetQuantity": 12
+    }
+  },
+  "distributionAlgorithm": {
+    "step1": "Assign each tie to its primary category based on criteria",
+    "step2": "Ensure home page has exactly 12 featured products (mix of premium and mid-range ties)",
+    "step3": "Ensure neckties has exactly 15 products",
+    "step4": "Ensure all other categories have exactly 12 products each",
+    "step5": "If a category has fewer than needed, either borrow from neckties or create variations"
+  },
+  "outputDistribution": {
+    "home": "12 featured products",
+    "neckties": "15 products",
+    "bowTies": "12 products",
+    "pocketSquares": "12 products",
+    "men": "12 products",
+    "women": "12 products",
+    "combos": "12 products",
+    "oversizedTees": "12 products",
+    "wedding": "12 products"
+  }
+} 
