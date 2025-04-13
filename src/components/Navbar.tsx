@@ -170,7 +170,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col items-center">
             {/* Top section with logo and right icons */}
-            <div className="w-full flex justify-between items-center py-5">
+            <div className="w-full flex justify-between items-center py-6">
               {/* Left section - mobile menu or spacer for desktop */}
               <div className="w-28 flex justify-start">
                 {/* Hamburger Menu Button (Mobile only) */}
@@ -201,7 +201,7 @@ const Navbar = () => {
                     <img 
                       src="/images/navbar.png" 
                       alt="DYNASTY" 
-                      className="h-12 w-auto"
+                      className="h-16 w-auto"
                     />
                   </Link>
                 </motion.div>
@@ -322,7 +322,7 @@ const Navbar = () => {
       </motion.nav>
       
       {/* Spacer for the fixed navbar */}
-      <div className="h-[106px]"></div>
+      <div className="h-[120px]"></div>
       
       {/* Breadcrumbs */}
       {generateBreadcrumbs()}

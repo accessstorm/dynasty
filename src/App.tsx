@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { luxuryTheme } from './components/LuxuryTheme';
 import WhatsAppButton from './components/WhatsAppButton';
+import ChatbotButton from './components/ChatbotButton';
 
 // Pages
 import Home from './pages/Home';
@@ -44,6 +45,8 @@ function App() {
           <Footer />
           {/* WhatsApp floating button */}
           <WhatsAppButton phoneNumber="+919820238241" />
+          {/* Chatbot floating button */}
+          <ChatbotButton />
         </div>
       </Router>
     </MantineProvider>
