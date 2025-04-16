@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, Badge, Text, Button } from "@mantine/core";
 import { motion, AnimatePresence } from "framer-motion";
+import CategoricalCollection from "./CategoricalCollection";
 
 interface Product {
   id: number;
@@ -258,14 +259,6 @@ const FeaturedProducts = () => {
                 alt="Dynasty Logo" 
                 className="w-full max-w-md mx-auto h-auto object-contain rounded-sm"
               />
-              <div className="mt-8 text-center md:text-left">
-                <Text className="text-gray-700 leading-relaxed">
-                  Started in the heart of Mumbai, Dynasty has grown from a small family-owned shop to one of India's premier tie and accessory brands. Our commitment to quality and craftsmanship has earned us the trust of discerning gentlemen across the country.
-                </Text>
-                <Text className="text-gray-700 leading-relaxed mt-4">
-                  Each piece in our collection is meticulously handcrafted by our master artisans, using only the finest materials sourced from around the world. We take pride in our attention to detail and our dedication to preserving traditional techniques while embracing modern designs.
-                </Text>
-              </div>
             </motion.div>
             
             <motion.div 
@@ -275,23 +268,112 @@ const FeaturedProducts = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <img 
-                src="/images/logoBlack.jpg" 
-                alt="Dynasty Logo Black" 
-                className="w-full max-w-md mx-auto h-auto object-contain rounded-sm"
-              />
-              <div className="mt-8 bg-gray-50 p-6 rounded-sm">
-                <Text className="font-serif text-2xl font-medium mb-4 text-gray-900 tracking-wide text-center">
-                  STATE-OF-THE-ART PRODUCTS WITH A DRIVEN APPROACH TOWARDS CUSTOMER DELIGHT. KEEP MARCHING AHEAD!
+              <div className="mt-8 text-center md:text-left">
+                <Text className="text-gray-700 leading-relaxed">
+                  Started in the heart of Mumbai, Dynasty has grown from a small family-owned shop to one of India's premier tie and accessory brands. Our commitment to quality and craftsmanship has earned us the trust of discerning gentlemen across the country.
                 </Text>
-                <div className="mt-4 text-center">
-                  <p className="text-gray-800 font-medium">Mr. Subramaniam</p>
-                  <p className="text-gray-600">Real Air Vice Marshal</p>
-                  <p className="text-gray-600">Indian Air Force</p>
-                </div>
+                <Text className="text-gray-700 leading-relaxed mt-4">
+                  Each piece in our collection is meticulously handcrafted by our master artisans, using only the finest materials sourced from around the world. We take pride in our attention to detail and our dedication to preserving traditional techniques while embracing modern designs.
+                </Text>
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <CategoricalCollection />
+      
+      {/* Featured Collection Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <Text className="text-4xl font-serif mb-3">Featured Collection</Text>
+            <Text className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Discover our handpicked selection of the finest ties, crafted for the modern gentleman.
+            </Text>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {products.slice(0, 4).map((product, index) => (
+              <Card 
+                key={`featured-${index}`}
+                shadow="sm" 
+                padding="0"
+                radius="sm"
+                className="overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
+              >
+                <Card.Section>
+                  <div className="h-64 overflow-hidden">
+                    <motion.div
+                      className="w-full h-full bg-cover bg-center"
+                      style={{ backgroundImage: `url(${product.image})` }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  </div>
+                </Card.Section>
+                
+                <div className="p-4">
+                  <Text fw={500} className="mb-1">{product.name}</Text>
+                  <Text fz="sm" c="dimmed">{formatINR(product.price)}</Text>
+                </div>
+              </Card>
+            ))}
+          </motion.div>
+          
+          <div className="text-center mt-12">
+            <Button
+              variant="outline"
+              radius="0"
+              className="border-black text-black hover:bg-black hover:text-white transition-all px-8 py-2 tracking-widest text-sm uppercase"
+            >
+              Explore All Neckties
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <Text className="text-4xl font-serif mb-3">Testimonial</Text>
+          </motion.div>
+          
+          <motion.div 
+            className="max-w-3xl mx-auto bg-gray-50 p-6 rounded-sm"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Text className="font-serif text-2xl font-medium mb-4 text-gray-900 tracking-wide text-center">
+              STATE-OF-THE-ART PRODUCTS WITH A DRIVEN APPROACH TOWARDS CUSTOMER DELIGHT. KEEP MARCHING AHEAD!
+            </Text>
+            <div className="mt-4 text-center">
+              <p className="text-gray-800 font-medium">Mr. Subramaniam</p>
+              <p className="text-gray-600">Real Air Vice Marshal</p>
+              <p className="text-gray-600">Indian Air Force</p>
+            </div>
+          </motion.div>
         </div>
       </section>
       
@@ -369,68 +451,6 @@ const FeaturedProducts = () => {
               ))}
             </motion.div>
           )}
-        </div>
-      </section>
-      
-      {/* Featured Collection Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <Text className="text-4xl font-serif mb-3">Featured Collection</Text>
-            <Text className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover our handpicked selection of the finest ties, crafted for the modern gentleman.
-            </Text>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          >
-            {products.slice(0, 4).map((product, index) => (
-              <Card 
-                key={`featured-${index}`}
-                shadow="sm" 
-                padding="0"
-                radius="sm"
-                className="overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
-              >
-                <Card.Section>
-                  <div className="h-64 overflow-hidden">
-                    <motion.div
-                      className="w-full h-full bg-cover bg-center"
-                      style={{ backgroundImage: `url(${product.image})` }}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  </div>
-                </Card.Section>
-                
-                <div className="p-4">
-                  <Text fw={500} className="mb-1">{product.name}</Text>
-                  <Text fz="sm" c="dimmed">{formatINR(product.price)}</Text>
-                </div>
-              </Card>
-            ))}
-          </motion.div>
-          
-          <div className="text-center mt-12">
-            <Button
-              variant="outline"
-              radius="0"
-              className="border-black text-black hover:bg-black hover:text-white transition-all px-8 py-2 tracking-widest text-sm uppercase"
-            >
-              Explore All Neckties
-            </Button>
-          </div>
         </div>
       </section>
     </>
