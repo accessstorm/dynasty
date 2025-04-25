@@ -49,7 +49,7 @@ const CategoricalCollection = () => {
           </Text>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {products.map((product) => (
             <motion.div
               key={product.id}
@@ -65,7 +65,7 @@ const CategoricalCollection = () => {
                 radius="sm"
                 className="overflow-hidden border border-gray-200"
               >
-                <div className="relative h-80">
+                <div className="relative h-60 sm:h-80">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -100,7 +100,7 @@ const CategoricalCollection = () => {
                           to={`/product/${product.id}`}
                           variant="outline"
                           radius="0"
-                          className="border-white text-white hover:bg-white hover:text-black transition-all px-8 py-2 tracking-widest text-sm uppercase"
+                          className="border-white text-white hover:bg-white hover:text-black transition-all px-4 sm:px-8 py-1 sm:py-2 tracking-widest text-xs sm:text-sm uppercase"
                         >
                           View Details
                         </Button>
@@ -109,9 +109,9 @@ const CategoricalCollection = () => {
                   </AnimatePresence>
                 </div>
 
-                <div className="p-4">
-                  <Text fw={500} className="mb-1">{product.name}</Text>
-                  <Text fz="sm" c="dimmed">{formatINR(product.price)}</Text>
+                <div className="p-3 sm:p-4">
+                  <Text fw={500} size="sm" className="mb-1 truncate">{product.name}</Text>
+                  <Text size="xs" c="dimmed">{formatINR(product.price)}</Text>
                 </div>
               </Card>
             </motion.div>

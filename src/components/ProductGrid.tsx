@@ -35,16 +35,16 @@ const ProductGrid = ({ products, columns = 4 }: ProductGridProps) => {
   const getColumnClass = () => {
     switch(columns) {
       case 1: return 'grid-cols-1';
-      case 2: return 'grid-cols-1 sm:grid-cols-2';
-      case 3: return 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3';
-      case 4: return 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
-      default: return 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
+      case 2: return 'grid-cols-2';
+      case 3: return 'grid-cols-2 md:grid-cols-3';
+      case 4: return 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
+      default: return 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
     }
   }
 
   return (
     <motion.div
-      className={`grid ${getColumnClass()} gap-6`}
+      className={`grid ${getColumnClass()} gap-4 sm:gap-6`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"

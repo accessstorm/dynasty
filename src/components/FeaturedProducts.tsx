@@ -386,7 +386,7 @@ const FeaturedProducts = () => {
             </div>
           ) : (
             <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+              className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -402,7 +402,7 @@ const FeaturedProducts = () => {
                     className="overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300 h-full bg-white"
                   >
                     <Card.Section>
-                      <div className="relative h-72 overflow-hidden">
+                      <div className="relative h-60 sm:h-72 overflow-hidden">
                         <motion.div
                           className="w-full h-full bg-cover bg-center"
                           style={{ backgroundImage: `url(${product.image})` }}
@@ -421,17 +421,17 @@ const FeaturedProducts = () => {
                       </div>
                     </Card.Section>
 
-                    <div className="p-5">
-                      <Text component="h3" className="font-serif text-lg font-medium mb-1 text-gray-900">
+                    <div className="p-3 sm:p-5">
+                      <Text component="h3" className="font-serif text-sm sm:text-lg font-medium mb-1 text-gray-900 truncate">
                         {product.name}
                       </Text>
                       
-                      <Text size="sm" color="dimmed" className="mb-3 line-clamp-2" title={product.description}>
+                      <Text size="xs" color="dimmed" className="mb-2 sm:mb-3 line-clamp-2" title={product.description}>
                         {product.description}
                       </Text>
 
-                      <div className="flex justify-between items-center mt-auto pt-3 border-t border-gray-100">
-                        <Text className="font-medium text-lg">
+                      <div className="flex justify-between items-center mt-auto pt-2 sm:pt-3 border-t border-gray-100">
+                        <Text className="font-medium text-sm sm:text-lg">
                           {formatINR(product.price)}
                         </Text>
                         

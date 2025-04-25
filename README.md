@@ -103,6 +103,30 @@ Use these test credentials to simulate a payment:
 - Name: Any name
 - 3D Secure Password: 1234
 
+## Delhivery Integration
+
+The application includes integration with Delhivery for shipping and delivery services.
+
+### Setting Up Delhivery
+
+To enable Delhivery integration:
+
+1. Sign up for a Delhivery business account
+2. Get your API credentials (client ID and token)
+3. Add them to your .env file:
+   ```
+   DELHIVERY_API_KEY=your_api_key
+   DELHIVERY_ENDPOINT=https://track-api.delhivery.com/api/cmu/create.json
+   ```
+
+### Shipping Features
+
+- Automatic shipment creation after successful payment
+- Real-time tracking of orders
+- Shipping address collection
+- Order confirmation with tracking details
+- Integration with Razorpay payment flow
+
 ## Getting Started
 
 1. Clone the repository

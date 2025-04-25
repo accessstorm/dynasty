@@ -19,6 +19,7 @@ import Wedding from './pages/Wedding';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import ProductDetails from './pages/ProductDetails';
+import OrderConfirmation from './pages/OrderConfirmation';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/product/:productId" element={<ProductDetails />} />
+              <Route path="/order-confirmation" element={<OrderConfirmation />} />
             </Routes>
           </div>
           <Footer />

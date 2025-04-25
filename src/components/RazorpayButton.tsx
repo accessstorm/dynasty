@@ -1,5 +1,8 @@
 import { Button } from '@mantine/core';
 import React, { useState, useEffect } from 'react';
+import { Modal } from '@mantine/core';
+import ShippingAddressForm from './ShippingAddressForm';
+import { useNavigate } from 'react-router-dom';
 
 // Define Razorpay response interface
 interface RazorpayResponse {
@@ -34,6 +37,18 @@ interface RazorpayOptions {
   };
 }
 
+// Define shipping address interface
+interface ShippingAddress {
+  name: string;
+  phone: string;
+  email: string;
+  line1: string;
+  line2: string;
+  city: string;
+  state: string;
+  pincode: string;
+}
+
 // Define global window with Razorpay
 declare global {
   interface Window {
@@ -48,6 +63,12 @@ interface RazorpayButtonProps {
   className?: string;
   buttonText?: string;
   children?: React.ReactNode;
+  productDetails?: {
+    id: number;
+    name: string;
+    quantity: number;
+    price: number;
+  };
 }
 
 const RazorpayButton: React.FC<RazorpayButtonProps> = ({
@@ -56,10 +77,14 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
   description,
   className,
   buttonText = "Buy Now",
-  children
+  children,
+  productDetails
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [showAddressModal, setShowAddressModal] = useState(false);
+  const [shippingAddress, setShippingAddress] = useState<ShippingAddress | null>(null);
+  const navigate = useNavigate();
   
   // Load Razorpay script on component mount
   useEffect(() => {
@@ -89,8 +114,61 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
     loadRazorpayScript();
   }, []);
   
+  // Function to handle shipping address submission
+  const handleAddressSubmit = (address: ShippingAddress) => {
+    setShippingAddress(address);
+    setShowAddressModal(false);
+    // Proceed with payment after address is collected
+    handlePayment(address);
+  };
+  
+  // Function to create shipment with Delhivery
+  const createShipment = async (paymentId: string, orderData: any, address: ShippingAddress) => {
+    try {
+      console.log('Creating shipment with Delhivery...');
+      
+      const orderDetails = {
+        products: productDetails ? [productDetails] : [{ 
+          id: 1, 
+          name: name, 
+          quantity: 1, 
+          price: amount 
+        }],
+        amount: amount
+      };
+      
+      const response = await fetch('/api/create-shipment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          paymentId,
+          order: orderDetails,
+          address
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Shipment error: ${response.status} ${response.statusText}`);
+      }
+      
+      const shipmentData = await response.json();
+      console.log("Shipment created:", shipmentData);
+      
+      // Navigate to order confirmation page with tracking details
+      navigate(`/order-confirmation?trackingId=${shipmentData.trackingId}&estimatedDelivery=${shipmentData.estimatedDelivery}&paymentId=${paymentId}`);
+      
+    } catch (error) {
+      console.error('Error creating shipment:', error);
+      alert('Your payment was successful, but there was an issue creating your shipment. Our team will contact you shortly.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
   // Function to handle payment
-  const handlePayment = async () => {
+  const handlePayment = async (address: ShippingAddress) => {
     try {
       setIsLoading(true);
       
@@ -130,12 +208,13 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
         order_id: orderData.id,
         handler: function (response: RazorpayResponse) {
           console.log("Payment successful:", response);
-          alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+          // Instead of just showing an alert, create shipment with Delhivery
+          createShipment(response.razorpay_payment_id, orderData, address);
         },
         prefill: {
-          name: 'Customer Name',
-          email: 'customer@example.com',
-          contact: '9876543210',
+          name: address.name,
+          email: address.email,
+          contact: address.phone,
         },
         theme: {
           color: '#000000',
@@ -169,23 +248,44 @@ const RazorpayButton: React.FC<RazorpayButtonProps> = ({
     }
   };
   
+  // Handle button click to show address form first
+  const handleButtonClick = () => {
+    setShowAddressModal(true);
+  };
+  
   return (
-    <div className="relative">
-      <Button
-        className={className || "bg-black text-white hover:bg-gray-800"}
-        radius="xs"
-        onClick={handlePayment}
-        disabled={isLoading || !scriptLoaded}
-      >
-        {children || buttonText}
-      </Button>
+    <>
+      <div className="relative">
+        <Button
+          className={className || "bg-black text-white hover:bg-gray-800"}
+          radius="xs"
+          onClick={handleButtonClick}
+          disabled={isLoading || !scriptLoaded}
+        >
+          {children || buttonText}
+        </Button>
+        
+        {isLoading && (
+          <div className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center">
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+          </div>
+        )}
+      </div>
       
-      {isLoading && (
-        <div className="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center">
-          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-        </div>
-      )}
-    </div>
+      {/* Shipping Address Modal */}
+      <Modal
+        opened={showAddressModal}
+        onClose={() => setShowAddressModal(false)}
+        title="Shipping Details"
+        size="lg"
+        padding="xl"
+      >
+        <ShippingAddressForm
+          onSubmit={handleAddressSubmit}
+          onCancel={() => setShowAddressModal(false)}
+        />
+      </Modal>
+    </>
   );
 };
 

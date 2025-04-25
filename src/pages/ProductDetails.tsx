@@ -261,6 +261,12 @@ const ProductDetails = () => {
               description={product?.description || "Description"}
               className="bg-black text-white hover:bg-[#D4AF37] hover:text-black transition-all uppercase text-sm tracking-widest py-4 font-medium"
               buttonText="Buy Now"
+              productDetails={{
+                id: product?.id || 0,
+                name: product?.name || "Product",
+                quantity: quantity,
+                price: product?.price || 0
+              }}
             />
           </div>
           
